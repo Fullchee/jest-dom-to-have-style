@@ -1,8 +1,28 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("<App>", () => {
+  it("should have an aspect-ratio", () => {
+    render(<App />);
+    const app = screen.getByText("Hello");
+    /*
+    expect(element).toHaveStyle()
+
+    - Expected
+    - aspect-ratio: 1; */
+    expect(app).toHaveStyle({ aspectRatio: 1 });
+  });
+
+  it("should have a custom property", () => {
+    render(<App />);
+    const app = screen.getByText("Hello");
+
+    // workaround
+    expect(app.style._values).toMatchObject({
+      "--my-property": "1", // string instead of a number
+    });
+
+    // Compared values have no visual difference
+    expect(app).toHaveStyle({ "--my-property": 1 });
+  });
 });
