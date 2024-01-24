@@ -9,9 +9,9 @@ describe("<App>", () => {
     expect(element).toHaveStyle()
 
     - Expected
-    - aspect-ratio: 1; */
-    // expect(app).toHaveStyle({ aspectRatio: 1 });
-    expect(app).toHaveStyle({ "aspect-ratio": 1 });
+    - aspect-ratio: 1 / 1; */
+    expect(app).toHaveStyle({ "aspect-ratio": "1 / 1" });
+    expect(app).toHaveStyle({ aspectRatio: "1 / 1" });
   });
 
   it("should have a custom property", () => {
